@@ -6,10 +6,11 @@ var Client = require('node-rest-client').Client;
 
 
 
+
 var client = new Client();
 var url = 'mongodb://dataCollector:goCats@ds019078.mlab.com:19078/eecse349_stubhub';
 
-var observationNumber = 0;
+var interval = 60*60*100;
 
 
 //basic arguments so everything is in the same format
@@ -266,7 +267,7 @@ var main = function(){
 	processFestival(lollapalooza);
 	processFestival(bonnaroo);
 	processFestival(governorsBall);
-	setTimeout(main, 40000);
+	setTimeout(main, interval);
 };
 
 
