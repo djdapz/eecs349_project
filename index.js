@@ -10,7 +10,7 @@ var Client = require('node-rest-client').Client;
 var client = new Client();
 var url = 'mongodb://dataCollector:goCats@ds019078.mlab.com:19078/eecse349_stubhub';
 
-var interval = 60*60*100;
+var interval = 60*60*100; //minutes * seconds * milliseconds
 
 
 //basic arguments so everything is in the same format
@@ -34,7 +34,7 @@ var basicArgs = {
 };
 
 
-//Governor's Ball specific parameters
+//Lollapalooza specific parameters
 var lollapalooza = {
 	name: "lollapalooza",
 	tickets: [
@@ -61,7 +61,7 @@ var lollapalooza = {
 	]
 };
 
-
+//Bonnaroo specific parameters
 var bonnaroo = {
 	name: "bonnaroo",
 	tickets: [
@@ -76,9 +76,7 @@ var bonnaroo = {
 	]
 };
 
-
-
-//Governor's Ball specifi parameters
+//Governor's Ball specific parameters
 var governorsBall = {
 	name: "governorsBall",
 	tickets: [
@@ -100,6 +98,44 @@ var governorsBall = {
 		}
 	]
 };
+
+//Oustide Lands specific parameters
+var outsidelands = {
+	name: "outsidelands",
+	tickets: [
+		{
+			type: "full",
+			id: 9476770
+		},
+		{
+			type: "friday",
+			id:9476766
+		},
+		{
+			type: "saturday",
+			id: 9476767
+		},
+		{
+			type: "sunday",
+			id:9476768
+		},
+		{
+			type: "parking",
+			id:9476771
+		}
+	]
+};
+
+var springAwakening = {
+	name: "springAwakening",
+	tickets: [
+		{
+			type: "full",
+			id: 9517001
+		}
+	]
+};
+
 
 
 
@@ -261,15 +297,25 @@ var processFestival = function(festival){
 
 };
 
-var main = function(){
-
-
+var step1 = function(){
 	processFestival(lollapalooza);
 	processFestival(bonnaroo);
-	processFestival(governorsBall);
-	setTimeout(main, interval);
+
 };
 
+var step2 = function(){
+	processFestival(governorsBall);
+	processFestival(outsidelands);
+	processFestival(springAwakening);
+};
+
+var main = function(){
+	step2();
+	setTimeout(step1, 61000);	//one minute interval because api only allows 10 requests/minute
+	setTimeout(main, interval);
+
+
+};
 
 main();
 
