@@ -29,7 +29,7 @@ var basicArgs = {
 	},
 	headers: { 
 		"Content-Type": "application/json",
-		"Authorization": "Bearer e85831effcd23f97b34a7c98f372c"
+		"Authorization": "Bearer naXXtZhMKcj6SOMbjYqjANLPkpMa"
 	 }
 };
 
