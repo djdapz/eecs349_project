@@ -153,7 +153,7 @@ var insertDocument = function(db, data, callback){
 	db.collection(data.event.name).insertOne(data,
 		function(err, result){
 			assert.equal(err, null);
-			console.log("Inserted "+ data.event.name + ":" + data.event.type + ":" + data.dateQueried + ":"  +data.eventid);
+			console.log("Inserted "+ data.event.name + ":" + data.event.type + ":" + data.dateQueried + ":" + data.eventid);
 			callback();
 		}
 	)
