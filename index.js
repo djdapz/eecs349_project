@@ -4,13 +4,10 @@ var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 var Client = require('node-rest-client').Client;
 
-
-
-
 var client = new Client();
 var url = 'mongodb://dataCollector:goCats@ds019078.mlab.com:19078/eecse349_stubhub';
 
-var interval = 60*60*100; //minutes * seconds * milliseconds
+var interval = 60*60*1000; //minutes * seconds * milliseconds
 
 
 //basic arguments so everything is in the same format
@@ -156,7 +153,7 @@ var insertDocument = function(db, data, callback){
 	db.collection(data.event.name).insertOne(data,
 		function(err, result){
 			assert.equal(err, null);
-			console.log("Inserted "+ data.event.name + ":" + data.event.type + ":" + data.dateQueried);
+			console.log("Inserted "+ data.event.name + ":" + data.event.type + ":" + data.dateQueried + ":" data.event.id);
 			callback();
 		}
 	)
@@ -212,7 +209,7 @@ var getCounter = function(festivalName,callback){
 			db.close();
 
 			if(counter >-1){
-				console.log("coutner recieved for "+ festivalName);
+				console.log("Counter recieved for "+ festivalName);
 				callback(counter);
 			}
 		});
@@ -310,11 +307,20 @@ var step2 = function(){
 };
 
 var main = function(){
+	var currentDate = new Date();
+	var t = {
+		month: currentDate.getMonth().toString(),
+		day: currentDate.getDay().toString(),
+		hour: currentDate.getHours().toString(),
+		minutes: currentDate.getMinutes().toString()
+	};
+
+	console.log(t.month +':' + t.day +':'+ t.hour +':'+ t.minutes);
 	step2();
-	setTimeout(step1, 61000);	//one minute interval because api only allows 10 requests/minute
+	setTimeout(step1, 61000);	//one minute interval + 1 second because api only allows 10 requests/minute
 	setTimeout(main, interval);
 
-
+		
 };
 
 main();

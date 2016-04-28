@@ -33,7 +33,7 @@ var basicArgs = {
 var loginArgs = {
 	parameters:{
 		grant_type:"password",
-		username:"djdapz@aliol.com",
+		username:"djdapz@aol.com",
 		password:"abcde12345",
 		scope:"PRODUCTION"
 	},
@@ -61,15 +61,16 @@ var springAwakening = {
 var login = function(){
 	client.get('https://api.stubhub.com/login', loginArgs, 
 		function(data, response){
-			if(response.statusCode= 200){
+			if(response.statusCode== 200){
 				console.log("logged In");
+				console.log(data);
 				console.log("now testing springAwakening")
-				processFestival(springAwakening);
+				
 			}else{
 				console.log(" ");
 				console.log("!!!!!!!!!!!!LOGIN ERROR!!!!!!!!!!!!!!");
 				console.log(response.statusCode + " - " + response.statusMessage);
-				console.log(new Date());
+				console.log(data);
 				console.log(" ");
 			}
 
@@ -113,6 +114,7 @@ var getFestivalDetails = function(httpArgs, festivalName, ticketType, period){
 					type: ticketType.type
 				};
 				console.log("success");
+				console.log(response);
 			}else{ // Handle error so program doesn't crash on a bad request
 				console.log(" ");
 				console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -139,5 +141,7 @@ var processFestival = function(festival){
 };
 
 login();
+
+processFestival(springAwakening);
 
 
