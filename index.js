@@ -248,7 +248,7 @@ var getFestivalDetails = function(httpArgs, festivalName, ticketType, period){
 				data.dateQueried = {
 					dateObject: currentDate,
 					month: currentDate.getMonth(),
-					day: currentDate.getDay(),
+					day: currentDate.getDate(),
 					year: currentDate.getFullYear(),
 					hour: currentDate.getHours(),
 					minutes: currentDate.getMinutes(),
@@ -310,7 +310,7 @@ var main = function(){
 	var currentDate = new Date();
 	var t = {
 		month: currentDate.getMonth().toString(),
-		day: currentDate.getDay().toString(),
+		day: currentDate.getDate().toString(),
 		hour: currentDate.getHours().toString(),
 		minutes: currentDate.getMinutes().toString()
 	};
