@@ -133,6 +133,16 @@ var springAwakening = {
 	]
 };
 
+var twentyOnePilots = {
+	name: "twentyOnePilots",
+	tickets: [
+		{
+			type: "chicago",
+			id: 9581894
+		}
+	]
+};
+
 
 
 
@@ -297,6 +307,7 @@ var processFestival = function(festival){
 var step1 = function(){
 	processFestival(lollapalooza);
 	processFestival(bonnaroo);
+	processFestival(twentyOnePilots);
 
 };
 
