@@ -23,6 +23,7 @@ var basicArgs = {
 		priceType:" listingPrice",
 		tld:1
 	},
+
 	headers: { 
 		"Content-Type": "application/json",
 		"Authorization": "Bearer naXXtZhMKcj6SOMbjYqjANLPkpMa"
